@@ -9,4 +9,6 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 
 project(app LANGUAGES C)
 
+add_definitions(-DMG_TLS_MBED=1)
+
 target_sources(app PRIVATE src/main.c)
