@@ -1,4 +1,4 @@
-# Zephyr Example Application
+# Zephyr Mongoose Module Example Application
 
 This repository contains a Zephyr example application. The main purpose of this
 repository is to serve as a reference on how to structure Zephyr-based
@@ -40,20 +40,21 @@ environment. Follow the official
 
 ### Initialization
 
-The first step is to initialize the workspace folder (``my-workspace``) where
-the ``example-application`` and all Zephyr modules will be cloned. Run the following
+The first step is to initialize the workspace folder (``mongoose-workspace``) where
+the ``mongoose-example-application`` and all Zephyr modules will be cloned. Run the following
 command:
 
 ```shell
-# initialize my-workspace for the example-application (main branch)
-west init -m https://github.com/zephyrproject-rtos/example-application --mr main my-workspace
+# initialize mongoose-workspace for the example-application (main branch)
+west init -m git@github.com:Sparse-Technology/mongoose-example-application.git --mr main mongoose-workspace
 # update Zephyr modules
-cd my-workspace
+cd mongoose-workspace
 west update
 ```
 
 ### Building and running
 
+Tested with `stm32h747i_disco/stm32h747xx/m7`.
 To build the application, run the following command:
 
 ```shell
@@ -82,8 +83,19 @@ west flash
 
 ### Testing
 
-To execute Twister integration tests, run the following command:
+open your browser or run following curl command:
 
-```shell
-west twister -T tests --integration
+```bash
+curl http://10.5.194.51:8000/api/#
+```
+
+console output:
+
+```
+ID PROTO TYPE      LOCAL           REMOTE
+6    TCP ACCEPTED  0.0.0.0 10.5.190.235
+4    UDP CONNECTED 0.0.0.0 8.8.8.8
+3    UDP CONNECTED 0.0.0.0 216.239.35.8
+2    TCP LISTENING 0.0.0.0 0.0.0.0
+1    TCP LISTENING 0.0.0.0 0.0.0.0
 ```
