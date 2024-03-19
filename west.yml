@@ -8,6 +8,8 @@ manifest:
   remotes:
     - name: zephyrproject-rtos
       url-base: https://github.com/zephyrproject-rtos
+    - name: sparse
+      url-base: https://github.com/Sparse-Technology/mongoose-module
 
   projects:
     - name: zephyr
@@ -18,5 +20,14 @@ manifest:
         # strictly needed by the application.
         name-allowlist:
           - cmsis      # required by the ARM port
-          - hal_nordic # required by the custom_plank board (Nordic based)
-          - hal_stm32  # required by the nucleo_f302r8 board (STM32 based)
+          - hal_stm32  # required by the stm32h747i_disco board (STM32 based)
+          - hal_espressif # required by the esp32_devkitc board (xtensa based)
+          - mbedtls    # required by the network libraries
+          - fatfs      # required by the filesystem
+
+    - name: mongoose
+      remote: sparse # referred from remotes can change other forks or main
+      submodules: true # cesanta mongoose add as submodule
+      revision: master # can select different branch
+      repo-path: .
+      path: modules/lib/mongoose
